@@ -1,0 +1,299 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Key - Product Registration</title>
+
+    <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css">
+    
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/login.css">
+    <style>
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        #success_message {
+            display: none;
+        }
+
+
+
+        h1 {
+            color: white;
+        }
+
+        .warranty {
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span>login</a></li>
+            </ul>
+
+
+        </div>
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">Key
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-home"></i>Product Registration</a>
+                </li>
+                <li id="reghistory" style="display: none">
+                    <a href="admin.html"><i class="fa fa-fw fa-home"></i>Registration History</a>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- /#Login-Container -->
+        <div id="loginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <form class="sign-up">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" id="btnModelClose">&times;</button>
+                        <h1 class="sign-up-title">Login in</h1>
+                    </div>
+
+                    <input type="text" id="username" class="sign-up-input sign-up-username" placeholder="Username" autofocus  required>
+                    <input type="password" class="sign-up-input sign-up-password" placeholder="Password" id="password" required>
+                    <input type="submit" value="Log me in!" class="sign-up-button">
+                </form>
+            </div>
+        </div>
+        <!-- /#Login-Container -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+
+                <h1>Register your Limited Warranty</h1>
+
+                <div class="warranty">
+                    This limited warranty guarantees that Invisible First-Defense+ screen protection will provide coverage against the defects
+                    described. The limited warranty will be effective for one (1) year beginning with the original purchase
+                    date, which provides coverage against defects identified in the Terms and Conditions. For complete Terms
+                    and Conditions, click here.<br>
+                    <br>
+                </div>
+
+                <div class="warranty">This limited warranty is non-transferable and only applies to the original purchaser.<br>
+                    <br>
+                </div>
+
+                <div class="warranty">
+                    Please note: you must register your limited warranty within thirty (30) days of purchase. Failure to do so may void the warranty.<br>
+                    <br>
+                </div>
+
+
+
+
+
+                <form class="well form-horizontal bv-form" enctype="multipart/form-data" method="post" id="contact_form">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Register Today!</legend>
+                        <!-- Text input-->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">First Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="first_name" placeholder="First Name" class="form-control" type="text" value="" data-bv-field="first_name" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                                    <i class="form-control-feedback" data-bv-icon-for="first_name" style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="stringLength" data-bv-validator-for="first_name" class="help-block" style="display: none;">This value is not valid</small>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="first_name" class="help-block" style="display: none;">Please supply your first name</small>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">Last Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input name="last_name" placeholder="Last Name" class="form-control" type="text" value="" data-bv-field="last_name">
+                                    <i class="form-control-feedback" data-bv-icon-for="last_name" style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="stringLength" data-bv-validator-for="last_name" class="help-block" style="display: none;">This value is not valid</small>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="last_name" class="help-block" style="display: none;">Please supply your last name</small>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">E-Mail</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input name="email" placeholder="E-Mail Address" class="form-control" type="text" value="" data-bv-field="email">
+                                    <i class="form-control-feedback" data-bv-icon-for="email" style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="email" class="help-block" style="display: none;">Please supply your email address</small>
+                                <small data-bv-validator="emailAddress" data-bv-validator-for="email" class="help-block" style="display: none;">Please supply a valid email address</small>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">Phone #</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input name="phone" placeholder="(845)555-1212" class="form-control" type="text" value="" data-bv-field="phone">
+                                    <i class="form-control-feedback" data-bv-icon-for="phone" style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="phone" class="help-block" style="display: none;">Please supply your phone number</small>
+                                <small data-bv-validator="phone" data-bv-validator-for="phone" class="help-block" style="display: none;">Please supply a vaild phone number with area code</small>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">Address</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input name="address" placeholder="Address" class="form-control" type="text" value="" data-bv-field="address">
+                                    <i class="form-control-feedback" data-bv-icon-for="address" style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="stringLength" data-bv-validator-for="address" class="help-block" style="display: none;">This value is not valid</small>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="address" class="help-block" style="display: none;">Please supply your street address</small>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">City</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input name="city" placeholder="city" class="form-control" type="text" value="" data-bv-field="city">
+                                    <i class="form-control-feedback" data-bv-icon-for="city" style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="stringLength" data-bv-validator-for="city" class="help-block" style="display: none;">This value is not valid</small>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="city" class="help-block" style="display: none;">Please supply your city</small>
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">State</label>
+                            <div class="col-md-4 selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select name="state" class="form-control selectpicker" data-bv-field="state"><option value="">- Select State - </option><option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option><option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option><option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="DC">District of Columbia</option><option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option><option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option><option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option><option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option><option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option><option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option><option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option><option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option><option value="WI">Wisconsin</option><option value="WY">Wyoming</option></select>
+                                    <i class="form-control-feedback" data-bv-icon-for="state"
+                                        style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="state" class="help-block" style="display: none;">Please select your state</small>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group has-feedback">
+                            <label class="col-md-4 control-label">Zip Code</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input name="zip" placeholder="Zip Code" class="form-control" type="text" value="" data-bv-field="zip">
+                                    <i class="form-control-feedback" data-bv-icon-for="zip" style="display: none;"></i>
+                                </div>
+                                <small data-bv-validator="notEmpty" data-bv-validator-for="zip" class="help-block" style="display: none;">Please supply your zip code</small>
+                                <small data-bv-validator="zipCode" data-bv-validator-for="zip" class="help-block" style="display: none;">Please supply a vaild zip code</small>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Product Serial</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                    <input name="serial" placeholder="Product Serial/Pin Number" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group">
+                            <label class="col-md-4 control-label">Screen Protector Serial Number</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                    <input name="screen_serial" placeholder="Screen Protector Serial Number" class="form-control" type="text">
+                                </div>
+                            </div>
+                        </div>-->
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Purchase Receipt</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                    <input name="purchase_receipt" placeholder="Purchase Receipt" class="form-control" type="file">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-warning" id="btnRegister">Register <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <input type="hidden" value="">
+                </form>
+
+                <!-- Success message -->
+                <div class="alert alert-success" role="alert" id="success_message">
+                    Success <i class="glyphicon glyphicon-thumbs-up"></i>Thank you for registering your product, we
+                will get back to you shortly.
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js'></script>
+
+    <script src="assets/js/index.js"></script>
+
+</body>
+
+</html>

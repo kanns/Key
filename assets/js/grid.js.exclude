@@ -1,0 +1,145 @@
+$(function () {
+    var regdata=[];
+
+    $.ajax({
+        url: "/RegistrationService.ashx", //You can replace this with MVC/WebAPI/PHP/Java etc
+        method: "post",
+        data: "",
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            //Firing event if File Upload is completed!  
+            
+            regdata = JSON.parse(data);;
+            //alert($("#registrationGrid")[0]);
+            // btn.prop("disabled", false);
+            // btn.val("Submit");
+            //   $("#File1").val("");
+            
+            $("#jsGrid").jsGrid({
+                height: "100%",
+                width: "99%",
+         
+                autoload: true,
+                paging: true,
+                pageLoading: true,
+                pageSize: 10,
+                pageIndex: 1,
+                shrinkToFit: false,
+                autoWidth: false,
+                resizable: false,
+         
+                controller: {
+                    
+                    loadData: function(filter) {
+                        var startIndex = (filter.pageIndex - 1) * filter.pageSize;
+                        return {
+                            data: regdata.slice(startIndex, startIndex + filter.pageSize),
+                            itemsCount: regdata.length
+                            //db.clients.slice(startIndex, startIndex + filter.pageSize),
+                            //itemsCount: db.clients.length
+                        };
+                    }
+                },
+         
+                fields: [
+                    { name: "FirstName", type: "text", width: 100, title:"First Name" },
+                    { name: "LastName", type: "text", width: 100, title: "Last Name" },
+                    { name: "Address", type: "text", width: 150, title: "Address" },
+                    { name: "City", type: "text", width: 150, title: "City" },
+                    { name: "State", type: "text", width: 100, title: "State" },
+                    { name: "Zipcode", type: "text", width: 75, title: "Zipcode" },
+                    { name: "Email", type: "text", width: 150, title: "Email" },
+                    { name: "WarrantySlno", type: "text", width: 150, title: "Warranty #" },
+                    { name: "PurchaseDate", type: "text", width: 150, title: "Purchase Date" },
+                    { name: "PurchaseReceiptFile", type: "text", width: 150, title: "Receipt Copy" },
+                    { name: "CreatedDate", type: "text", width: 150, title: "Registration Date" },
+                ]
+            });
+         
+         
+            $("#pager").on("change", function() {
+                var page = parseInt($(this).val(), 10);
+                $("#jsGrid").jsGrid("openPage", page);
+            });
+
+        },
+        error: function (error) {
+            alert(error);
+        }
+
+        
+    });
+
+    
+    $("#getrecords").click(function () {
+        $.ajax({
+            url: "/RegistrationService.ashx", //You can replace this with MVC/WebAPI/PHP/Java etc
+            method: "post",
+            data: "",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                //Firing event if File Upload is completed!  
+                alert(data);
+                regdata = data;
+                alert($("#registrationGrid")[0]);
+                // btn.prop("disabled", false);
+                // btn.val("Submit");
+                //   $("#File1").val("");
+
+            },
+            error: function (error) {
+                alert(error);
+            }
+
+        });
+    });
+
+
+
+
+    
+});
+    var friends = [
+        {
+          Name: "Ada Lovelace",
+          Age: 36,
+          Country: 3,
+          Cool: true,
+        },
+        {
+          Name: "Grace Hopper",
+          Age: 85,
+          Country: 1,
+          Cool: true,
+        },
+        {
+          Name: "Alan Turing",
+          Age: 41,
+          Country: 3,
+          Cool: true,
+        },
+        {
+          Name: "Miguel Alcubierre",
+          Age: 53,
+          Country: 5,
+          Cool: true,
+        }
+      ];
+      
+      var countries = {
+        name: "Country",
+        type: "select",
+        items: [
+          { Name: "", Id: 0 },
+          { Name: "United States", Id: 1 },
+          { Name: "France", Id: 2 },
+          { Name: "United Kingdom", Id: 3 },
+          { Name: "Spain", Id: 4 },
+          { Name: "Mexico", Id: 5 }
+        ],
+        valueField: "Id",
+        textField: "Name"
+      }
+
