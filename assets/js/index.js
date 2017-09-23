@@ -189,6 +189,13 @@ $(document).ready(function () {
                         message: 'Please supply Screen Serial Number'
                     }
                 }
+            },
+            purchase_receipt: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please supply Purchase Receipt'
+                    }
+                }
             }
         }
     }).on('success.form.bv', function (e) {
