@@ -73,10 +73,49 @@ public class RegistrationService : IHttpHandler
                 string result = Newtonsoft.Json.JsonConvert.SerializeObject(data);
                 context.Response.Write(result);
                 break;
+            case "GetSerials":
+                context.Response.ContentType = "text/plain";
+                string FilterBy = context.Request.Form["filterby"];
+                var serials = GetSerials(FilterBy);
+                string serialresults = Newtonsoft.Json.JsonConvert.SerializeObject(serials);
+                context.Response.Write(serialresults);
+                break;
+            case "GenerateSerials":
+                context.Response.ContentType = "text/plain";
+                string SerialsToGenerate = context.Request.Form["serials"];
+                string Filter_By = context.Request.Form["filterby"];
+                var generatedserials = GenerateSerials(SerialsToGenerate,Filter_By);
+                string generatedresults = Newtonsoft.Json.JsonConvert.SerializeObject(generatedserials);
+                context.Response.Write(generatedresults);
+                break;
             default:
                 break;
         }
 
+    }
+
+    private object GenerateSerials(string serialsToGenerate,string filterBy)
+    {
+        int SerialCount = 0;
+        if (int.TryParse(serialsToGenerate, out SerialCount))
+        {
+            using (DBContext dbContext = new DBContext())
+            {
+                return dbContext.GenerateSerials(SerialCount, filterBy);
+            }
+        }
+        else
+        {
+            throw new Exception("Invalid Serial.");
+        }
+    }
+
+    private object GetSerials(string filterBy)
+    {
+        using (DBContext dbContext = new DBContext())
+        {
+            return dbContext.GetSerialRecords(filterBy);
+        }
     }
 
     private bool SerialNumberExist(string serialNo, out string message)

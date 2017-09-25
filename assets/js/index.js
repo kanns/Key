@@ -86,10 +86,13 @@ $(document).ready(function () {
 
     var toggleViewHistory = function () {
 
-        if (window.sessionStorage.getItem("loggedin") == "yes")
+        if (window.sessionStorage.getItem("loggedin") == "yes") {
             $("#reghistory").css({ 'display': 'block' })
-        else
+            $("#serialgenerator").css({ 'display': 'block' })
+        } else {
             $("#reghistory").css({ 'display': 'none' })
+            $("#serialgenerator").css({ 'display': 'none' })
+        }
     }
 
     toggleViewHistory();
@@ -198,7 +201,8 @@ $(document).ready(function () {
                 }
             }
         }
-    }).on('success.form.bv', function (e) {
+    }).on('success.form.bv',
+    function (e) {
 
 
         //// Prevent form submission

@@ -1,5 +1,13 @@
 var registrationData = {};
 
+
+var CheckLogin = function () {
+    if (window.sessionStorage.getItem("loggedin") == null || window.sessionStorage.getItem("loggedin") == "no")
+        window.location = "./registration.html";
+}
+
+CheckLogin();
+
 $(document).ready(function () {
 
     var GetData = function (startdate, enddate, firstload) {
@@ -33,6 +41,11 @@ $(document).ready(function () {
         });
     }
 
+    $("#logout").click(function () {
+        window.sessionStorage.setItem("loggedin", "no");
+        window.location = "./registration.html";
+        // toggleViewHistory();
+    })
 
     $("#btnExport").click(function (e) {
 

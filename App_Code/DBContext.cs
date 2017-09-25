@@ -74,4 +74,39 @@ public class DBContext : IDisposable
         }
         return isExist;
     }
+
+    public object GetSerialRecords(string filterBy)
+    {
+        string query = string.Empty;
+        switch (filterBy)
+        {
+            case "All":
+                query =
+                    @"select convert(varchar(10),Date_Issued,101) as IssuedDate,[Serial_Number]   from IssuedSerialNumbers a (NOLOCK)";
+                break;
+            case "Used":
+                query =
+                    @"select convert(varchar(10),a.Date_Issued,101) as IssuedDate,a.Serial_Number from IssuedSerialNumbers a (NOLOCK) inner join Registration (NOLOCK) b  on a.Serial_Number = b.WarrantySlno";
+                break;
+            default:
+                query =
+                    @"select convert(varchar(10),a.Date_Issued,101) as IssuedDate, 
+                    a.Serial_Number from IssuedSerialNumbers a (NOLOCK)  where a.Serial_Number NOT IN
+                    (select WarrantySlNo from Registration (NOLOCK))";
+                break;
+        }
+
+        var result = iDbConnection.Query(query);
+        return result;
+    }
+
+    public object GenerateSerials(int serialsToGenerate, string filterBy)
+    {
+      
+        string query =
+            "insert into IssuedSerialNumbers (Serial_Number,Date_Issued) SELECT TOP (@serialcount) Guid = NEWID(), GETDATE() FROM[master]..spt_values;";
+        var recordsaffected = iDbConnection.Execute(query, new { serialcount = serialsToGenerate });
+        var result = GetSerialRecords(filterBy);
+        return result;
+    }
 }
