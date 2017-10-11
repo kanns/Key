@@ -113,18 +113,14 @@ public class DBContext : IDisposable
     public object GetDropdownValues()
     {
         Dictionary<string, object> retval = new Dictionary<string, object>();
-        var query =
-            @"SELECT distinct [model_name_common],[make] FROM Model(NOLOCK) order by model_name_common;SELECT [carrier_id],[carrier_name] FROM Carrier(NOLOCK) order by carrier_name";
-        Dictionary<string, object> models = new Dictionary<string, object>();
-        SqlMapper.GridReader result = iDbConnection.QueryMultiple(query);
-        var lookup = result.Read().ToLookup(x => x.make, x => new {x.model_name, x.model_name_common});
+       Dictionary<string, object> models = new Dictionary<string, object>();
+        var makedata = iDbConnection.Query("SELECT distinct [model_name_common],[make] FROM Model(NOLOCK) order by model_name_common");
+        var lookup = makedata.ToLookup(x => x.make, x => new { x.model_name, x.model_name_common });
         foreach (var grouping in lookup.OrderBy(x => x.Key))
             models[grouping.Key] = grouping.ToArray();
         retval["make"] = models;
-        retval["carrier"] = result.Read().ToArray();
-        // Dictionary<dynamic, dynamic[][]> retval = result.Read().ToLookup(x => x.make, x => new[] { x.model_name, x.model_name_common }).ToDictionary(grp => grp.Key, grp => grp.ToArray());
-
-            // retval. = result.Read().ToArray();
-            return retval;
+        var carrierdata = iDbConnection.Query("SELECT [carrier_id],[carrier_name] FROM Carrier(NOLOCK) order by carrier_name");
+        retval["carrier"] = carrierdata.ToArray();
+        return retval;
     }
 }
