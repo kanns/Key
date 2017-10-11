@@ -199,6 +199,27 @@ $(document).ready(function () {
                         message: 'Please supply Purchase Receipt'
                     }
                 }
+            },
+            carrier: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your Carrier'
+                    }
+                }
+            },
+            make: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your Make'
+                    }
+                }
+            },
+            model: {
+                validators: {
+                    notEmpty: {
+                        message: 'Please select your Model'
+                    }
+                }
             }
         }
     }).on('success.form.bv',
@@ -257,7 +278,7 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: "/RegistrationService.ashx", //You can replace this with MVC/WebAPI/PHP/Java etc
+            url: "RegistrationService.ashx", //You can replace this with MVC/WebAPI/PHP/Java etc
             method: "post",
             data: formData,
             contentType: false,
