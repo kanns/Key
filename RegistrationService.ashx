@@ -88,10 +88,24 @@ public class RegistrationService : IHttpHandler
                 string generatedresults = Newtonsoft.Json.JsonConvert.SerializeObject(generatedserials);
                 context.Response.Write(generatedresults);
                 break;
+            case "initdropdown":
+                context.Response.ContentType = "text/plain";
+                var retval = GetDropdownRecord();
+                string dropdownvalues = Newtonsoft.Json.JsonConvert.SerializeObject(retval);
+                context.Response.Write(dropdownvalues);
+                break;
             default:
                 break;
         }
 
+    }
+
+    private object GetDropdownRecord()
+    {
+        using (DBContext dbContext = new DBContext())
+        {
+            return dbContext.GetDropdownValues();
+        }
     }
 
     private object GenerateSerials(string serialsToGenerate,string filterBy)

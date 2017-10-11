@@ -286,4 +286,66 @@ $(document).ready(function () {
 
 
     });
+
+
+    var stateObject = {
+            "Monterey": ["Salinas", "Gonzales"],
+            "Alameda": ["Oakland", "Berkeley"],
+            "Douglas": ["Roseburg", "Winston"],
+            "Jackson": ["Medford", "Jacksonville"]
+    }
+    
+    var initcombos = function (data) {
+        var carrierSel = document.getElementById("carrierSel");
+            for (var c in data.carrier) {
+                carrierSel.options[carrierSel.options.length] = new Option(data.carrier[c].carrier_name, data.carrier[c].carrier_id);
+        }
+       var makeSel = document.getElementById("makeSel"),
+            modelSel = document.getElementById("modelSel");
+        for (var m in data.make) {
+            makeSel.options[makeSel.options.length] = new Option(m, m);
+        }
+        //stateSel.onchange = function () {
+        //    countySel.length = 1; // remove all options bar first
+        //    citySel.length = 1; // remove all options bar first
+        //    if (this.selectedIndex < 1) return; // done   
+        //    for (var county in stateObject[this.value]) {
+        //        countySel.options[countySel.options.length] = new Option(county, county);
+        //    }
+        //}
+        //stateSel.onchange(); // reset in case page is reloaded
+        makeSel.onchange = function () {
+            modelSel.length = 1; // remove all options bar first
+            if (this.selectedIndex < 1) return; // done   
+            var model = data.make[this.value];
+            for (var i = 0; i < model.length; i++) {
+                modelSel.options[modelSel.options.length] = new Option(model[i].model_name_common, model[i].model_name_common);
+            }
+        }
+    }
+    //Initialilze dropdown
+
+    
+            var formData = new FormData();
+            formData.append("action", "initdropdown");
+
+            $.ajax({
+                url: "RegistrationService.ashx", //You can replace this with MVC/WebAPI/PHP/Java etc
+                method: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    dropdownvalues = JSON.parse(data);
+                    initcombos(dropdownvalues);
+
+                },
+                error: function (error) {
+                    alert(error.message);
+                   
+                }
+
+            });
+      
+       
 });
